@@ -1,5 +1,3 @@
-package com.nationscape;
-
 import java.util.Random;
 
 /**

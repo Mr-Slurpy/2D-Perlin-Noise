@@ -1,5 +1,3 @@
-package com.nationscape;
-
 import java.util.Random;
 
 /**
@@ -39,15 +37,37 @@ public class Noise2D {
 		int floorX = x / spread;
 		int floorY = y / spread;
 		
-		int x1 = (floorX - 1) * spread;
-		int x2 = floorX * spread;
-		int x3 = (floorX + 1) * spread;
-		int x4 = (floorX + 2) * spread;
+		int x1;
+		int x2;
+		int x3;
+		int x4;
+		if(x >= 0){
+			x1 = (floorX - 1) * spread;
+			x2 = floorX * spread;
+			x3 = (floorX + 1) * spread;
+			x4 = (floorX + 2) * spread;
+		}else{
+			x1 = (floorX - 2) * spread;
+			x2 = (floorX - 1) * spread;
+			x3 = floorX * spread;
+			x4 = (floorX + 1) * spread;
+		}
 		
-		int y1 = (floorY - 1) * spread;
-		int y2 = floorY * spread;
-		int y3 = (floorY + 1) * spread;
-		int y4 = (floorY + 2) * spread;
+		int y1;
+		int y2;
+		int y3;
+		int y4;
+		if(y >= 0){
+			y1 = (floorY - 1) * spread;
+			y2 = floorY * spread;
+			y3 = (floorY + 1) * spread;
+			y4 = (floorY + 2) * spread;
+		}else{
+			y1 = (floorY - 2) * spread;
+			y2 = (floorY - 1) * spread;
+			y3 = floorY * spread;
+			y4 = (floorY + 1) * spread;
+		}
 		
 		float p1 = getRandomValue(x1, y1, amp);
 		float p2 = getRandomValue(x2, y1, amp);
@@ -68,6 +88,9 @@ public class Noise2D {
 		
 		float fractionX = x % spread / (float)spread;
 		float fractionY = y % spread / (float)spread;
+		
+		if(x < 0)fractionX++;
+		if(y < 0)fractionY++;
 		
 		float a = cubicInterp(p1, p2, p3, p4, fractionX);
 		float b = cubicInterp(p5, p6, p7, p8, fractionX);
