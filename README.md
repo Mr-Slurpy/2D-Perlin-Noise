@@ -9,6 +9,7 @@ Support for creating interpolated noise and white noise also included. However, 
    - Improve seed calculation.
  - Add support for 1D noise.
  - Add support for linear and cosine interpolation.
+ - Make thread-safe.
  
 ###Helpful Links
  - Interpolation/Coherent Noise: http://libnoise.sourceforge.net/noisegen/index.html
